@@ -13,7 +13,7 @@ jobs:
         dotnet-version: 7.0.x
     - name: Install Allure
       run: |
-        iex (new-object net.webclient).downloadstring('https://get.scoop.sh')
+        iex --skip-validation (new-object net.webclient).downloadstring('https://get.scoop.sh')
         scoop install allure
     - name: Run Selenium test
       run: |

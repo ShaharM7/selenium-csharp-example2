@@ -12,8 +12,8 @@ jobs:
       with:
         dotnet-version: 7.0.x
     - name: Install Allure
+      uses: MinoruSekine/setup-scoop@v1
       run: |
-        choco install scoop
         scoop install allure
     - name: Run Selenium test
       run: |

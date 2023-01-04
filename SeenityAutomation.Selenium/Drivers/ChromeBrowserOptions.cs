@@ -8,7 +8,7 @@ namespace SeenityAutomation.Selenium.Drivers
     {
         public ChromeBrowserOptions(IOptions<ChromeBrowserOptionsConfig> chromeBrowserOptionsConfig)
         {
-            //AddArguments(chromeBrowserOptionsConfig.Value.Arguments);
+            AddArguments(chromeBrowserOptionsConfig.Value.Arguments);
         }
     }
 }

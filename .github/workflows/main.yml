@@ -13,7 +13,7 @@ jobs:
         dotnet-version: 7.0.x
     - name: Install Allure
       run: |
-        choco install allure -y
+        scoop install allure
     - name: Run Selenium test
       run: |
         dotnet test SeenityAutomation.Selenium.csproj --logger "trx;LogFileName=test_results.trx"

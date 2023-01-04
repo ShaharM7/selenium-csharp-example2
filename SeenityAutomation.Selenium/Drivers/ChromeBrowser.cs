@@ -4,7 +4,7 @@ namespace SeenityAutomation.Selenium.Drivers
 {
     public class ChromeBrowser : ChromeDriver
     {
-        public ChromeBrowser()
+        public ChromeBrowser(ChromeOptions options) : base(options)
         {
         }
     }

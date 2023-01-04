@@ -4,25 +4,24 @@ on: [push]
 
 jobs:
   selenium_test:
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up .NET 7
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 7.0.x
-    - name: Install Allure
-      uses: MinoruSekine/setup-scoop@v1
-      run: |
-        scoop install allure
-    - name: Run Selenium test
-      run: |
-        dotnet test SeenityAutomation.Selenium.csproj --logger "trx;LogFileName=test_results.trx"
-    - name: Generate Allure report
-      run: |
-        allure generate test_results.trx --output allure-report
-    - name: Upload Allure report
-      uses: actions/upload-artifact@v2
-      with:
-        name: allure-report
-        path: allure-report
+      - uses: actions/checkout@v2
+      - name: Set up .NET 7
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 7.0
+      - name: Install Allure
+        run: |
+          curl -sSL https://get.allure.dev/allure/sh | sh
+      - name: Run Selenium test
+        run: |
+          dotnet test SeenityAutomation.Selenium.csproj --logger "trx;LogFileName=test_results.trx"
+      - name: Generate Allure report
+        run: |
+          allure generate test_results.trx --output allure-report
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
+          path: allure-report

@@ -10,8 +10,8 @@ namespace SeenityAutomation.Selenium.Navigation
         private readonly IWebDriver _driver;
         private readonly HomePage _homePage;
 
-        private string? _baseUrl;
-        private string? _homePageRoute;
+        private readonly string _baseUrl;
+        private readonly string _homePageRoute;
 
         public PageNavigator(IWebDriver driver, HomePage homePage, IOptions<NavigationConfig> navigationConfig)
         {
@@ -24,7 +24,7 @@ namespace SeenityAutomation.Selenium.Navigation
 
         public HomePage NavigateToHomePage()
         {
-            _driver.Navigate().GoToUrl("https://www.court.gov.il/ngcs.web.site/homepage.aspx");
+            _driver.Navigate().GoToUrl(_baseUrl + _homePageRoute);
             return _homePage;
         }
     }

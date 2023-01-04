@@ -11,7 +11,7 @@ namespace SeenityAutomation.Selenium.Elements
 
         public int GetNumberOfRows()
         {
-            return Element.FindElements(By.TagName("div")).Count;
+            return Element.FindElements(By.CssSelector("[role='row']")).Count;
         }
     }
 }

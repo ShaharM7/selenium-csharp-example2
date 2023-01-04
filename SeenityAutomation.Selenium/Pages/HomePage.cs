@@ -56,17 +56,10 @@ namespace SeenityAutomation.Selenium.Pages
             _locateCaseButton!.Click();
         }
 
-        public bool IsCaseExistInTble()
+        public bool IsCaseExistInTable()
         {
             InitCasesTable();
-            var numberOfRows = _casesTable!.GetNumberOfRows();
-
-            if (numberOfRows == 1)
-            {
-                return true;
-            }
-
-            return false;
+            return _casesTable!.GetNumberOfRows() == 1;
         }
 
         private void InitConfirmTheRegulationsButton()
@@ -96,8 +89,8 @@ namespace SeenityAutomation.Selenium.Pages
 
         private void InitCasesTable()
         {
-            IWebElement element = WebDriverWait.Until(ElementIsVisible(By.ClassName(CASES_TABLE_CLASS_NAME)));
-            _casesTable = new Table(WebDriver, WebDriverWait, element);
+            var casesTable = WebDriverWait.Until(ElementIsVisible(By.ClassName(CASES_TABLE_CLASS_NAME)));
+            _casesTable = new Table(WebDriver, WebDriverWait, casesTable);
         }
     }
 }

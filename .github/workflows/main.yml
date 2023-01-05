@@ -14,9 +14,7 @@ jobs:
       - name: Set up Allure
         run: |
           curl -sSL https://get.allure.dev/allure/sh | sh
-          sed -i '/usr/local/allure/bin/d' ~/.bashrc
-          echo 'export PATH=$PATH:/usr/local/allure/bin' >> ~/.bashrc
-          source ~/.bashrc
+          echo 'export PATH=$PATH:/usr/local/allure/bin' >> $GITHUB_ENV
       - name: Build project
         run: |
           dotnet build

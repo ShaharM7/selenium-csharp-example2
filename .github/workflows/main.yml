@@ -18,7 +18,7 @@ jobs:
           find /usr -name "allure" -print | head -1
           echo 'wtfffffffffffffffffffffffffffffffff allure report!'
           mkdir -p $GITHUB_WORKSPACE/bin
-          cp /usr/share/allure $GITHUB_WORKSPACE/bin
+          cp /usr/share/allure/bin/allure $GITHUB_WORKSPACE/bin
           echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV
           source ~/.bashrc
       - name: Build project

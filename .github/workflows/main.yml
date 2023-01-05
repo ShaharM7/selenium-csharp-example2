@@ -14,7 +14,7 @@ jobs:
       - name: Set up Allure
         run: |
           sudo apt-get update
-          sudo apt-get -y install allure
+          sudo apt-get -y install allure --install-dir /bin
           mkdir -p $GITHUB_WORKSPACE/bin
           cp /bin/allure $GITHUB_WORKSPACE/bin
           echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV

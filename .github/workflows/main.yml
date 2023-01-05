@@ -15,9 +15,8 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get -y install allure
-          allure --version
           mkdir -p $GITHUB_WORKSPACE/bin
-          cp /usr/local/allure/bin/allure $GITHUB_WORKSPACE/bin
+          cp /bin/allure $GITHUB_WORKSPACE/bin
           echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV
           source ~/.bashrc
       - name: Build project

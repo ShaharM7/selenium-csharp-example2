@@ -1,4 +1,4 @@
-name: Selenium test with .NET 6
+name: Selenium test with .NET 6 and NUnit
 
 on: [push]
 
@@ -11,20 +11,25 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.100
+      - name: Install NUnit test adapter
+        run: |
+          dotnet tool install --global dotnet-test-nunit
       - name: Build project
         run: |
           dotnet build
       - name: Install Allure
         run: |
           curl -sSL https://get.allure.dev/allure/sh | sh
-      - name: Run Selenium test
+      - name: Run Selenium tests with NUnit
         run: |
-          dotnet test --logger "trx;LogFileName=test_results.trx"
+          dotnet test --logger "trx;LogFileName=test_results.trx;LogFileFormat=nunit2"
         id: selenium
       - name: Generate Allure report
+        if: always()
         run: |
           allure generate test_results.trx --output allure-report
       - name: Upload Allure report
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: allure-report

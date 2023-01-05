@@ -9,10 +9,11 @@ using static SeenityAutomation.Selenium.TestData;
 
 namespace SeenityAutomation.Selenium
 {
+    [TestFixture]
     public class Tests
     {
         private const string APP_SETTINGS_JSON_PATH = "appsettings.json";
-        
+
         protected IWebDriver? ChromeBrowser;
         protected PageNavigator? PageNavigator;
 

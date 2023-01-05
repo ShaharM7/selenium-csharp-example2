@@ -11,12 +11,15 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.100
+      - name: Set up Allure
+        run: |
+          curl -sSL https://get.allure.dev/allure/sh | sh
+          sed -i '/usr/local/allure/bin/d' ~/.bashrc
+          echo 'export PATH=$PATH:/usr/local/allure/bin' >> ~/.bashrc
+          source ~/.bashrc
       - name: Build project
         run: |
           dotnet build
-      - name: Install Allure
-        run: |
-          curl -sSL https://get.allure.dev/allure/sh | sh
       - name: Run Selenium tests with NUnit
         run: |
           dotnet test --logger "trx;LogFileName=test_results.trx;LogFileFormat=nunit2"

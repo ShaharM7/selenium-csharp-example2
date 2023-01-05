@@ -13,8 +13,12 @@ jobs:
           dotnet-version: 6.0.100
       - name: Set up Allure
         run: |
-          curl -sSL https://get.allure.dev/allure/sh | sh
-          echo 'export PATH=$PATH:/usr/local/allure/bin' >> $GITHUB_ENV
+          sudo apt-add-repository ppa:qameta/allure
+          sudo apt-get update 
+          sudo apt-get install allure
+          sudo apt-add-repository ppa:yandex-qatools/allure-framework
+          sudo apt-get update
+          sudo apt-get install allure-commandline
       - name: Build project
         run: |
           dotnet build

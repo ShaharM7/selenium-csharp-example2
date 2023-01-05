@@ -13,10 +13,11 @@ jobs:
           dotnet-version: 6.0.100
       - name: Set up Allure
         run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
+          curl -o allure.tgz -OLs https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/LATEST/allure-commandline-LATEST.tgz
+          sudo tar -zxvf allure.tgz -C /opt/
+          sudo ln -s /opt/allure-LATEST/bin/allure /usr/bin/allure
           mkdir -p $GITHUB_WORKSPACE/bin
-          cp /usr/local/allure/bin/allure $GITHUB_WORKSPACE/bin
+          cp /usr/bin/allure $GITHUB_WORKSPACE/bin
           echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV
           source ~/.bashrc
       - name: Build project

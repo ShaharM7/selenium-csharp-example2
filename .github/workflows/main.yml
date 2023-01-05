@@ -11,12 +11,16 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.100
+      - name: Build project
+        run: |
+          dotnet build
       - name: Install Allure
         run: |
           curl -sSL https://get.allure.dev/allure/sh | sh
       - name: Run Selenium test
         run: |
           dotnet test --logger "trx;LogFileName=test_results.trx"
+        id: selenium
       - name: Generate Allure report
         run: |
           allure generate test_results.trx --output allure-report

@@ -20,6 +20,7 @@ jobs:
           cp /usr/share/allure $GITHUB_WORKSPACE/bin
           echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV
           source ~/.bashrc
+          allure --version
       - name: Build project
         run: |
           dotnet build

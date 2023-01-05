@@ -13,9 +13,8 @@ jobs:
           dotnet-version: 6.0.100
       - name: Set up Allure
         run: |
-          sudo apt-add-repository ppa:qameta/allure
-          sudo apt-get update 
-          sudo apt-get install allure
+          sudo apt-get update
+          sudo apt-get -y install allure
           mkdir -p $GITHUB_WORKSPACE/bin
           cp /usr/local/allure/bin/allure $GITHUB_WORKSPACE/bin
           echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV

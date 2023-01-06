@@ -19,6 +19,7 @@ jobs:
           dotnet test --logger "trx;LogFileName=test_results.trx;LogFileFormat=nunit2"
         id: selenium
       - name: Find Allure Report Directory
+        if: always()
         run: |
           find /usr -name "allure-results" -type d
       - name: Test marketplace action

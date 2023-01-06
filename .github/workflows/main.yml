@@ -21,7 +21,7 @@ jobs:
       - name: Find Allure Report Directory
         if: always()
         run: |
-          find /usr -name "allure-results" -type d
+          find /usr -name "allure-results" -type d -print
       - name: Test marketplace action
         uses: simple-elf/allure-report-action@v1.6
         if: always()

@@ -1,6 +1,6 @@
 name: Selenium test with .NET 6 and NUnit on Ubuntu
 
-on: [push]
+on: [ push ]
 
 jobs:
   selenium_test:
@@ -11,16 +11,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.100
-      - name: Set up Allure
-        run: |
-          sudo apt-get update
-          sudo apt-get -y install allure
-          find /usr -name "allure" -print | head -1
-          mkdir -p $GITHUB_WORKSPACE/bin
-          cp /usr/share/allure $GITHUB_WORKSPACE/bin
-          echo 'export PATH=$PATH:$GITHUB_WORKSPACE/bin' >> $GITHUB_ENV
-          source ~/.bashrc
-          allure --version
       - name: Build project
         run: |
           dotnet build
@@ -28,13 +18,19 @@ jobs:
         run: |
           dotnet test --logger "trx;LogFileName=test_results.trx;LogFileFormat=nunit2"
         id: selenium
-      - name: Generate Allure report
+      - name: Test marketplace action
+        uses: simple-elf/allure-report-action@master
         if: always()
-        run: |
-          allure generate test_results.trx --output allure-report
-      - name: Upload Allure report
-        if: always()
-        uses: actions/upload-artifact@v2
+        id: allure-report
         with:
-          name: allure-report
-          path: allure-report
+          allure_results: build/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history

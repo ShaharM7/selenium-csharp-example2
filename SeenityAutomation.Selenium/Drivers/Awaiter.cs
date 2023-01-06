@@ -14,6 +14,8 @@ namespace SeenityAutomation.Selenium.Drivers
             PollingInterval = awaiterConfig.Value.PollingInterval;
 
             driver.Manage().Timeouts().ImplicitWait = awaiterConfig.Value.ImplicitWait;
+            driver.Manage().Timeouts().AsynchronousJavaScript = awaiterConfig.Value.AsynchronousJavaScript;
+            driver.Manage().Timeouts().PageLoad = awaiterConfig.Value.PageLoad;
         }
     }
 }

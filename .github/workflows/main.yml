@@ -1,9 +1,6 @@
 name: Selenium test with .NET 6 and Chrome on Ubuntu
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   selenium_test:

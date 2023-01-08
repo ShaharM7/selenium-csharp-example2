@@ -45,7 +45,7 @@ namespace SeenityAutomation.Selenium
 
             // ---------------------------------- Infra -------------------------------------------
             services.AddSingleton<PageNavigator>();
-            services.AddSingleton<DriverOptions, BrowserOptions>();
+            services.AddSingleton<ChromeOptions, BrowserOptions>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -35,10 +35,10 @@ namespace SeenityAutomation.Selenium
             {
                 services.AddSingleton<IWebDriver, RemoteBrowser>();
             }
-            else if (!Configuration.Get<RemoteBrowserConfig>().UseSeleniumGrid)
-            {
-                services.AddSingleton<IWebDriver, ChromeBrowser>();
-            }
+            // else if (!Configuration.Get<RemoteBrowserConfig>().UseSeleniumGrid)
+            // {
+            //     services.AddSingleton<IWebDriver, ChromeBrowser>();
+            // }
 
             // ---------------------------------- Pages ------------------------------------------------
             services.AddSingleton<HomePage>();

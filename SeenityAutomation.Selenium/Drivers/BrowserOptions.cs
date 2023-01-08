@@ -14,7 +14,7 @@ namespace SeenityAutomation.Selenium.Drivers
             {
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;
-                PlatformName = remoteBrowserConfig.Value.PlatformName;
+                //PlatformName = remoteBrowserConfig.Value.PlatformName;
             }
         }
     }

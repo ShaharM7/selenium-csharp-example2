@@ -27,17 +27,25 @@ namespace SeenityAutomation.Selenium
             services.Configure<NavigationConfig>(Configuration.GetSection(nameof(NavigationConfig)));
             services.Configure<AwaiterConfig>(Configuration.GetSection(nameof(AwaiterConfig)));
             services.Configure<ChromeBrowserOptionsConfig>(Configuration.GetSection(nameof(ChromeBrowserOptionsConfig)));
+            services.Configure<RemoteBrowserConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
 
             // --------------------------------- Drivers -----------------------------------------------
-            services.AddSingleton<IWebDriver, ChromeBrowser>();
             services.AddSingleton<WebDriverWait, Awaiter>();
+            if (Configuration.Get<RemoteBrowserConfig>().UseSeleniumGrid)
+            {
+                services.AddSingleton<IWebDriver, RemoteBrowser>();
+            }
+            else if (!Configuration.Get<RemoteBrowserConfig>().UseSeleniumGrid)
+            {
+                services.AddSingleton<IWebDriver, ChromeBrowser>();
+            }
 
             // ---------------------------------- Pages ------------------------------------------------
             services.AddSingleton<HomePage>();
 
             // ---------------------------------- Infra -------------------------------------------
             services.AddSingleton<PageNavigator>();
-            services.AddSingleton<ChromeOptions, ChromeBrowserOptions>();
+            services.AddSingleton<DriverOptions, BrowserOptions>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

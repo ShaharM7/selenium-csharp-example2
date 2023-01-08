@@ -1,11 +1,21 @@
 name: Selenium test with .NET 6 and Chrome on Ubuntu
 
-on: [push]
+on: [ push,  pull_reques]
 
 jobs:
   selenium_test:
     runs-on: ubuntu-20.04
     steps:
+      - name: BrowserStack Env Setup
+          uses: browserstack/github-actions/setup-env@master
+          with:
+            username: ${{ secrets.BROWSERSTACK_USERNAME }}
+            access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      - name: BrowserStack Local Tunnel Setup
+        uses: browserstack/github-actions/setup-local@master
+        with:
+          local-testing: start
+          local-identifier: random
       - uses: actions/checkout@v2
       - name: Set up .NET 6
         uses: actions/setup-dotnet@v1

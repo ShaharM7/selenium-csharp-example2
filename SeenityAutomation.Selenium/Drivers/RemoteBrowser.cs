@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Extensions.Options;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using SeenityAutomation.Selenium.Configuration;
@@ -9,11 +8,9 @@ namespace SeenityAutomation.Selenium.Drivers
 {
     public class RemoteBrowser : RemoteWebDriver
     {
-        public RemoteBrowser(Uri remoteAddress, ICapabilities options, IOptions<RemoteBrowserConfig> remoteBrowserConfig,
-            ChromeOptions browserOptions) : base(remoteAddress, options)
+        public RemoteBrowser(IOptions<RemoteBrowserConfig> remoteBrowserConfig, ChromeOptions browserOptions)
+            : base(new Uri(remoteBrowserConfig.Value.SeleniumGridUrl), browserOptions)
         {
-            remoteAddress = new Uri(remoteBrowserConfig.Value.SeleniumGridUrl);
-            options = browserOptions!.ToCapabilities();
         }
     }
 }

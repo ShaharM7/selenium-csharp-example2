@@ -6,7 +6,7 @@ namespace SeenityAutomation.Selenium.Drivers
 {
     public class BrowserOptions : ChromeOptions
     {
-        public BrowserOptions(IOptions<ChromeBrowserOptionsConfig> chromeBrowserOptionsConfig, IOptions<RemoteBrowserConfig> remoteBrowserConfig)
+        public BrowserOptions(IOptions<BrowserOptionsConfig> chromeBrowserOptionsConfig, IOptions<RemoteBrowserConfig> remoteBrowserConfig)
         {
             AddArguments(chromeBrowserOptionsConfig.Value.Arguments);
 

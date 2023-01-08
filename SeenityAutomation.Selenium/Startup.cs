@@ -26,7 +26,7 @@ namespace SeenityAutomation.Selenium
             // ------------------------------- Configuration -------------------------------------------
             services.Configure<NavigationConfig>(Configuration.GetSection(nameof(NavigationConfig)));
             services.Configure<AwaiterConfig>(Configuration.GetSection(nameof(AwaiterConfig)));
-            services.Configure<ChromeBrowserOptionsConfig>(Configuration.GetSection(nameof(ChromeBrowserOptionsConfig)));
+            services.Configure<BrowserOptionsConfig>(Configuration.GetSection(nameof(BrowserOptionsConfig)));
             services.Configure<RemoteBrowserConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
 
             // --------------------------------- Drivers -----------------------------------------------

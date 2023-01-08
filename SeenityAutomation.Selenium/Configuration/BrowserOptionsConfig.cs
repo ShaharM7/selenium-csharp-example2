@@ -2,7 +2,7 @@
 
 namespace SeenityAutomation.Selenium.Configuration
 {
-    public class ChromeBrowserOptionsConfig
+    public class BrowserOptionsConfig
     {
         public IList<string> Arguments { get; set; }
     }

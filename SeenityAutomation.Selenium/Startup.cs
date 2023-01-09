@@ -29,19 +29,19 @@ namespace SeenityAutomation.Selenium
             services.Configure<AwaiterConfig>(Configuration.GetSection(nameof(AwaiterConfig)));
             services.Configure<BrowserOptionsConfig>(Configuration.GetSection(nameof(BrowserOptionsConfig)));
             services.Configure<RemoteBrowserConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
-            
+
             // ---------------------------------- Pages ------------------------------------------------
             services.AddSingleton<HomePage>();
 
             // ---------------------------------- Infra -------------------------------------------
             services.AddSingleton<PageNavigator>();
             services.AddSingleton<ChromeOptions, BrowserOptions>();
-            
+
             // --------------------------------- Drivers -----------------------------------------------
             services.AddSingleton<WebDriverWait, Awaiter>();
 
-            var useSeleniumGrid = Configuration.GetValue<bool>("RemoteBrowserConfig:UseSeleniumGrid");
-            switch (useSeleniumGrid)
+            var useSeleniumGridValue = Configuration.GetValue<bool>("RemoteBrowserConfig:UseSeleniumGrid");
+            switch (useSeleniumGridValue)
             {
                 case true:
                     services.AddSingleton<IWebDriver, RemoteBrowser>();

@@ -20,7 +20,7 @@ namespace SeenityAutomation.Selenium.Drivers.Options
                     // {"UserName", "shahar_yLMDKN"},
                     // {"AccessKey", "uptTLMfxMatqmnHyztp6"}
                 };
-                AddAdditionalOption("bstack:options", browserstackOptions);
+                AddAdditionalOption("BstackOptions", browserstackOptions);
 
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;

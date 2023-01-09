@@ -7,6 +7,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using SeenityAutomation.Selenium.Configuration;
 using SeenityAutomation.Selenium.Drivers;
+using SeenityAutomation.Selenium.Drivers.Options;
 using SeenityAutomation.Selenium.Navigation;
 using SeenityAutomation.Selenium.Pages;
 
@@ -28,24 +29,27 @@ namespace SeenityAutomation.Selenium
             services.Configure<AwaiterConfig>(Configuration.GetSection(nameof(AwaiterConfig)));
             services.Configure<BrowserOptionsConfig>(Configuration.GetSection(nameof(BrowserOptionsConfig)));
             services.Configure<RemoteBrowserConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
-
-            // --------------------------------- Drivers -----------------------------------------------
-            services.AddSingleton<WebDriverWait, Awaiter>();
-            if (Configuration.Get<RemoteBrowserConfig>().UseSeleniumGrid)
-            {
-                services.AddSingleton<IWebDriver, RemoteBrowser>();
-            }
-            // else if (!Configuration.Get<RemoteBrowserConfig>().UseSeleniumGrid)
-            // {
-            //     services.AddSingleton<IWebDriver, ChromeBrowser>();
-            // }
-
+            
             // ---------------------------------- Pages ------------------------------------------------
             services.AddSingleton<HomePage>();
 
             // ---------------------------------- Infra -------------------------------------------
             services.AddSingleton<PageNavigator>();
             services.AddSingleton<ChromeOptions, BrowserOptions>();
+            
+            // --------------------------------- Drivers -----------------------------------------------
+            services.AddSingleton<WebDriverWait, Awaiter>();
+
+            var useSeleniumGrid = Configuration.GetValue<bool>("RemoteBrowserConfig:UseSeleniumGrid");
+            switch (useSeleniumGrid)
+            {
+                case true:
+                    services.AddSingleton<IWebDriver, RemoteBrowser>();
+                    break;
+                case false:
+                    services.AddSingleton<IWebDriver, ChromeBrowser>();
+                    break;
+            }
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using SeenityAutomation.Selenium.Configuration;
 
-namespace SeenityAutomation.Selenium.Drivers
+namespace SeenityAutomation.Selenium.Drivers.Options
 {
     public class BrowserOptions : ChromeOptions
     {
@@ -14,7 +14,7 @@ namespace SeenityAutomation.Selenium.Drivers
             {
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;
-                //PlatformName = remoteBrowserConfig.Value.PlatformName;
+                PlatformName = remoteBrowserConfig.Value.PlatformName;
             }
         }
     }

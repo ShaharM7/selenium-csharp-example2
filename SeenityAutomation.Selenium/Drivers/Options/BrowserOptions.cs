@@ -6,10 +6,10 @@ namespace SeenityAutomation.Selenium.Drivers.Options
 {
     public sealed class BrowserOptions : ChromeOptions
     {
-        public BrowserOptions(IOptions<BrowserOptionsConfig> chromeBrowserOptionsConfig,
+        public BrowserOptions(IOptions<BrowserOptionsConfig> browserOptionsConfig,
             IOptions<RemoteBrowserConfig> remoteBrowserConfig, IOptions<BrowserStackConfig> browserStackConfig)
         {
-            AddArguments(chromeBrowserOptionsConfig.Value.Arguments);
+            AddArguments(browserOptionsConfig.Value.Arguments);
 
             if (remoteBrowserConfig.Value.UseSeleniumGrid)
             {
@@ -17,7 +17,6 @@ namespace SeenityAutomation.Selenium.Drivers.Options
 
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;
-                PlatformName = remoteBrowserConfig.Value.PlatformName;
             }
         }
     }

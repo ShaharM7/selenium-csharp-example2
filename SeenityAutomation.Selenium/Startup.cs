@@ -25,10 +25,12 @@ namespace SeenityAutomation.Selenium
         public void ConfigureServices(IServiceCollection services)
         {
             // ------------------------------- Configuration -------------------------------------------
+            services.AddOptions();
             services.Configure<NavigationConfig>(Configuration.GetSection(nameof(NavigationConfig)));
             services.Configure<AwaiterConfig>(Configuration.GetSection(nameof(AwaiterConfig)));
             services.Configure<BrowserOptionsConfig>(Configuration.GetSection(nameof(BrowserOptionsConfig)));
             services.Configure<RemoteBrowserConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
+            services.Configure<BrowserStackConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
 
             // ---------------------------------- Pages ------------------------------------------------
             services.AddSingleton<HomePage>();

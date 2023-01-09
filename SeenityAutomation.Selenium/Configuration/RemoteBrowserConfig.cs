@@ -1,4 +1,6 @@
-﻿namespace SeenityAutomation.Selenium.Configuration
+﻿using System.Collections.Generic;
+
+namespace SeenityAutomation.Selenium.Configuration
 {
     public class RemoteBrowserConfig
     {

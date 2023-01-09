@@ -14,11 +14,11 @@ namespace SeenityAutomation.Selenium.Drivers.Options
 
             if (remoteBrowserConfig.Value.UseSeleniumGrid)
             {
-                // Dictionary<string, object> browserstackOptions = new();
-                // browserstackOptions.Add("local", "false");
-                // browserstackOptions.Add("userName", "shahar_yLMDKN");
-                // browserstackOptions.Add("accessKey", "uptTLMfxMatqmnHyztp6");
-                // AddAdditionalOption("bstack:options", browserstackOptions);
+                Dictionary<string, object> browserstackOptions = new();
+                browserstackOptions.Add("local", "false");
+                browserstackOptions.Add("userName", "shahar_yLMDKN");
+                browserstackOptions.Add("accessKey", "uptTLMfxMatqmnHyztp6");
+                AddAdditionalOption("bstack:options", browserstackOptions);
 
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;

@@ -27,7 +27,7 @@ jobs:
       - name: Run Selenium tests
         run: |
           dotnet test
-      - name: 'BrowserStackLocal Stop'  # Terminating the BrowserStackLocal tunnel connection
+      - name: BrowserStackLocal Stop
         uses: browserstack/github-actions/setup-local@master
         with:
           local-testing: stop

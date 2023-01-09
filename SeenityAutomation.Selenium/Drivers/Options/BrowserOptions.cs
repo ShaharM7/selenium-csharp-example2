@@ -17,8 +17,8 @@ namespace SeenityAutomation.Selenium.Drivers.Options
                 Dictionary<string, object> browserstackOptions = new()
                 {
                     {"local", "false"},
-                    // {"UserName", "shahar_yLMDKN"},
-                    // {"AccessKey", "uptTLMfxMatqmnHyztp6"}
+                    {"UserName", "shahar_yLMDKN"},
+                    {"AccessKey", "uptTLMfxMatqmnHyztp6"}
                 };
                 AddAdditionalOption("BstackOptions", browserstackOptions);
 

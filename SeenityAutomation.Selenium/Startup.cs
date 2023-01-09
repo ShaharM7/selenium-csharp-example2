@@ -29,6 +29,7 @@ namespace SeenityAutomation.Selenium
             services.Configure<AwaiterConfig>(Configuration.GetSection(nameof(AwaiterConfig)));
             services.Configure<BrowserOptionsConfig>(Configuration.GetSection(nameof(BrowserOptionsConfig)));
             services.Configure<RemoteBrowserConfig>(Configuration.GetSection(nameof(RemoteBrowserConfig)));
+            services.Configure<BrowserStackConfig>(Configuration.GetSection(nameof(BrowserStackConfig)));
 
             // ---------------------------------- Pages ------------------------------------------------
             services.AddSingleton<HomePage>();

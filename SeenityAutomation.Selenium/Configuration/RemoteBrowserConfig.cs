@@ -2,6 +2,7 @@
 {
     public class RemoteBrowserConfig
     {
+        public BrowserStackConfig BrowserStackConfig { get; set; }
         public bool UseSeleniumGrid { get; set; }
         public string SeleniumGridUrl { get; set; }
         public string BrowserName { get; set; }

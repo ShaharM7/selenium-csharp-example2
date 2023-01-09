@@ -8,7 +8,7 @@ namespace SeenityAutomation.Selenium.Elements
         protected IWebDriver Driver;
         protected WebDriverWait Wait;
         protected IWebElement Element;
-        
+
         public AbstractElement(IWebDriver driver, WebDriverWait wait, IWebElement element)
         {
             Driver = driver;

@@ -8,6 +8,5 @@ namespace SeenityAutomation.Selenium.Configuration
         public string SeleniumGridUrl { get; set; }
         public string BrowserName { get; set; }
         public string BrowserVersion { get; set; }
-        public string PlatformName { get; set; }
     }
 }

@@ -4,6 +4,6 @@ namespace SeenityAutomation.Selenium.Configuration
 {
     public class BrowserStackConfig
     {
-        public Dictionary<string, object> BrowserStackOptions { get; set; }
+        public IDictionary<string, object> BrowserStackOptions { get; set; }
     }
 }

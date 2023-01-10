@@ -13,10 +13,10 @@ namespace SeenityAutomation.Selenium.Drivers.Options
 
             if (remoteBrowserConfig.Value.UseSeleniumGrid)
             {
-                AddAdditionalOption("bstack:options", browserStackConfig.Value.BrowserStackOptions);
-
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;
+
+                AddAdditionalOption("bstack:options", browserStackConfig.Value.BrowserStackOptions);
             }
         }
     }

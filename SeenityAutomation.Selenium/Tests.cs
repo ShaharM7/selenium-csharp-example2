@@ -1,9 +1,6 @@
-﻿using Allure.Net.Commons;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Allure.Attributes;
-using NUnit.Allure.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeenityAutomation.Selenium.Navigation;
@@ -13,7 +10,6 @@ using static SeenityAutomation.Selenium.TestData;
 namespace SeenityAutomation.Selenium
 {
     [TestFixture]
-    [AllureNUnit]
     public class Tests
     {
         private const string APP_SETTINGS_JSON_PATH = "appsettings.json";
@@ -34,8 +30,6 @@ namespace SeenityAutomation.Selenium
         }
 
         [Test]
-        [AllureTag("NUnit", "Debug")]
-        [AllureSeverity(SeverityLevel.critical)]
         public void WhenSearchCorrectCaseNumber_ThenCaseAppearInCasesTable()
         {
             HomePage? homePage = PageNavigator?.NavigateToHomePage();

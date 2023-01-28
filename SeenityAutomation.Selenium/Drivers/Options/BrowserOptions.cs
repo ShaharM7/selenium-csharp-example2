@@ -15,6 +15,7 @@ namespace SeenityAutomation.Selenium.Drivers.Options
             {
                 BrowserName = remoteBrowserConfig.Value.BrowserName;
                 BrowserVersion = remoteBrowserConfig.Value.BrowserVersion;
+                PlatformName = remoteBrowserConfig.Value.PlatformName;
 
                 AddAdditionalOption("bstack:options", browserStackConfig.Value.BrowserStackOptions);
             }
